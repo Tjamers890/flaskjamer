@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://sachinkurve.github.io/flaskjamers/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>tjamers</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./tjamers_files/bootstrap.min.css">
+    <script src="./tjamers_files/jquery.min.js.download"></script>
+    <script src="./tjamers_files/bootstrap.min.js.download"></script>
+</head>
+<body>
+    <div class="bg-image" image="" has="" not="" repeat="" style="
+   background-image: url(&#39;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd92bNxoE-DApoTYchBHub2L1Ty0jA5c-dagEJSPL2wtahZpxEJocYsRzVRtuMMSItbbI&amp;usqp=CAU&#39;));
+   width:100%;
+   height: 100%
+   ">
+    <div style="background-image: linear-gradient(to right, #1065c0 , #33c7d8); margin:30px; padding: 3px;">
+        <h3 style="text-align: center;">Employee Data Management System</h3>
+    </div>
+    <button type="button" style="float: right; margin-right:30px;margin-bottom:30px" class="btn btn-primary">Add New Employee</button>
+    
+    <div style="margin:30px">
+        <bold>
+            </bold><table class="table" style:bgcolor-yellow="">
+        <tbody><tr>
+                <th>Emps_id</th> 
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+            <th>Salary</th>
+            <th>Joining Data</th>
+            <th>Designation</th>
+            <th>Action</th>
+        </tr>
+    
+       
+        </tbody><tbody id="employees-data"><tr><td>EMP345</td><td>pranay</td><td>Nagpur</td><td>pranaybest123@gmail.com</td><td>255632135</td><td>45000</td><td>Wed, 23 Nov 2022 </td><td>tester</td><td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteData(&#39;undefined&#39;)">Delete</button></td></tr><tr></tr><tr><td>EMP299</td><td>sushant</td><td>Pune</td><td>sushant234@gmail.com</td><td>45257634</td><td>12000</td><td>Wed, 23 Nov 2022 </td><td>developer</td><td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteData(&#39;undefined&#39;)">Delete</button></td></tr><tr></tr><tr><td>EMP345</td><td>Sachin</td><td>Mumbai</td><td>sachin@gmail.com</td><td>98765432221</td><td>12000</td><td>Wed, 23 Nov 2022 </td><td>QA</td><td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteData(&#39;undefined&#39;)">Delete</button></td></tr><tr></tr><tr><td>EMP908</td><td>Umang</td><td>Nagpur</td><td>umang@gmail.com</td><td>876543222</td><td>25000</td><td>Wed, 23 Nov 2022 </td><td>Tester</td><td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteData(&#39;undefined&#39;)">Delete</button></td></tr><tr></tr><tr><td>EMP546</td><td>Shital</td><td>Mumbai</td><td>shital@gmail.com</td><td>98765456789</td><td>30000</td><td>Wed, 23 Nov 2022 </td><td>Developer</td><td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteData(&#39;undefined&#39;)">Delete</button></td></tr><tr></tr><tr><td>EMP567</td><td>Roshan</td><td>Mumbai</td><td>roshan@gmail.com</td><td>8769054321</td><td>30000</td><td>Wed, 23 Nov 2022 </td><td>Developer</td><td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteData(&#39;undefined&#39;)">Delete</button></td></tr><tr></tr></tbody></table>
+    </div>
+    </div>
+
+<script>
+
+    fetch('https://jameresflaskproject.herokuapp.com/users')
+    .then(response=> response.json())
+    .then(data=> { 
+
+        console.table(data);
+
+        output = "" 
+        var date = [];
+        for(i = 0; i< data .length; i++){
+
+            let text = "Wed, 23 Nov 2022 00:00:00 GMT";
+const myArray = text.split("00:00:00 ");
+
+
+            output += `<tr>` 
+            output += `<td>${data[i]['emps_id']}</td>`
+            output += `<td>${data[i]['name']}</td>`
+            output += `<td>${data[i]['address']}</td>`
+            output += `<td>${data[i]['email']}</td>`
+            output += `<td>${data[i]['mobileno']}</td>`
+            output += `<td>${data[i]['salary']}</td>`
+            output += `<td>${myArray[0]}</td>`
+            output += `<td>${data[i]['designation']}</td>`
+            output += `<td>`;
+            output += `<button class="btn btn-primary">Edit</button>`;
+            output += '&nbsp;&nbsp;';
+            output += `<button class="btn btn-danger" onclick=deleteData('${data[i]._id}')>Delete</button>`;
+            output += `</td>`;
+            
+            
+            output += '<tr>'
+           
+            
+        }
+    console.log(output);
+
+    document.getElementById('employees-data').innerHTML= output
+})
+</script>
+</body></html>
